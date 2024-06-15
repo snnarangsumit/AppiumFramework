@@ -1,0 +1,1 @@
+INFO    2019-07-30 06:49:56,485 [main] cucumber.StepDefinition.BaseSteps  - Config properties file loaded

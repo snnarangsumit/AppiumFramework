@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="8" guice-stage="DEVELOPMENT" name="Failed suite [Parallel Suite]" parallel="classes">
+  <listeners>
+    <listener class-name="datadriven.listener.TestListener"/>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="Test1">
+    <classes>
+      <class name="datadriven.testscript.TC003_SampleScript"/>
+      <class name="datadriven.testscript.TC004_SampleScript"/>
+    </classes>
+  </test> <!-- Test1 -->
+  <test name="Test2">
+  </test> <!-- Test2 -->
+  <test name="Test1(failed)" parallel="classes">
+    <classes>
+      <class name="datadriven.testscript.TC004_SampleScript">
+        <methods>
+          <include name="BeforeTest"/>
+          <include name="teardown"/>
+          <include name="AfterTest"/>
+          <include name="Setup"/>
+          <include name="TC004_SampleScript_Test" invocation-numbers="0 1 2 3"/>
+        </methods>
+      </class> <!-- datadriven.testscript.TC004_SampleScript -->
+      <class name="datadriven.testscript.TC003_SampleScript">
+        <methods>
+          <include name="BeforeTest"/>
+          <include name="teardown"/>
+          <include name="Setup"/>
+          <include name="AfterTest"/>
+        </methods>
+      </class> <!-- datadriven.testscript.TC003_SampleScript -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+</suite> <!-- Failed suite [Parallel Suite] -->
